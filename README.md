@@ -1,5 +1,7 @@
 # Interrupt Handler
 
+## **⚠️ Disclaimer: This project is for educational purposes only.**
+
 This is a program in Rust that uses threads and synchronization primitives to manage interrupts.
 
 ## Description
@@ -10,8 +12,9 @@ The `Interrupt` struct represents a single interrupt and contains an ID and a pr
 
 To run the program, you can use the following command in your terminal:
 
-`cargo run`
-
+```
+cargo run
+```
 
 ## Contributing
 
