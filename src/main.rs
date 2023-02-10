@@ -57,5 +57,6 @@ fn main() {
         handler_thread.lock().unwrap().push(interrupt3);
     });
 
+    thread::sleep(Duration::from_millis(100));
     handler.handle_interrupts();
 }
