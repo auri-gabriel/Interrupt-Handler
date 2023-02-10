@@ -24,11 +24,14 @@ impl InterruptHandler {
         let interrupt_copy = interrupt.clone();
         interrupts.push(interrupt);
         println!(
-            "Received interrupt with id: {} and priority: {}",
+            "Interrupção recebida com id: {} e prioridade: {}",
             interrupt_copy.id, interrupt_copy.priority
         );
         interrupts.sort_by_key(|interrupt| interrupt.priority);
-        println!("Interrupts list after sorting: {:?}", &*interrupts);
+        println!(
+            "Lista de interrupções depois de ordenar: {:?}",
+            &*interrupts
+        );
     }
 
     fn handle_interrupts(&self) {
@@ -36,7 +39,7 @@ impl InterruptHandler {
         while !interrupts.is_empty() {
             let interrupt = interrupts.pop().unwrap();
             println!(
-                "Handling interrupt with id: {} and priority: {}",
+                "Manipulando interrupção com id: {} e prioridade: {}",
                 interrupt.id, interrupt.priority
             );
             thread::sleep(Duration::from_millis(1000));
