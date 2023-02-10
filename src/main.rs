@@ -2,7 +2,7 @@ use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct Interrupt {
     id: u32,
     priority: u32,
@@ -21,10 +21,11 @@ impl InterruptHandler {
 
     fn receive_interrupt(&self, interrupt: Interrupt) {
         let mut interrupts = self.interrupts.lock().unwrap();
+        let interrupt_copy = interrupt.clone();
         interrupts.push(interrupt);
         println!(
             "Received interrupt with id: {} and priority: {}",
-            interrupt.id, interrupt.priority
+            interrupt_copy.id, interrupt_copy.priority
         );
         interrupts.sort_by_key(|interrupt| interrupt.priority);
         println!("Interrupts list after sorting: {:?}", &*interrupts);
